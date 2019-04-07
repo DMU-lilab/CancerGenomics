@@ -16,7 +16,7 @@ Manual installation
 #### Install R dependencies (in R)
  ```install.packages("data.table") # version > 1.10.4```
 
-#### Install the MutHeatmap package
+#### Install the CancerGenomics package
 From the command line and in the directory where CancerGenomics github was cloned.
 ```R CMD INSTALL CancerGenomics ```
 
