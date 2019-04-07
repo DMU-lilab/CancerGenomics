@@ -13,6 +13,7 @@ require(data.table)
 #' @examples
 #' data(afd_test_dt)
 #' afd <- test_afd(afd_test_dt$FREQ_1.x, afd_test_dt$FREQ_1.y)
+#' @export test_afd
 #' @import data.table
 test_afd <- function(FREQ_1.x, FREQ_1.y){
   # Get afd value in all possible arguments
