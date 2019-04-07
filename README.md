@@ -40,3 +40,13 @@ devtools::document()
 ```
 生成文本，看是否有问题
 * Rstudio的Build - Check Package里面可以测试生成包是否有问题，有一些错误和warning可以酌情允许，还需要查看man里面的帮助文档是否有问题
+* 使用git上传同步，需要有修改的权限，在CancerGenomics文件夹下，linux命令
+```
+git add *
+git commit -m "msg" # "msg"就是为什么修改，修改了什么
+git push -u origin master
+```
+这个时候输入帐号密码就可以同步了
+
+
+
