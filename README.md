@@ -36,7 +36,8 @@ install.packages("devtools")
 * 用Rstudio打开文件夹内的CancerGenomics.Rproj，打开R工程
 * 在工程里面新建新的R脚本，放在里面名称为R的文件夹，可以参照已经存在的脚本，如果函数有依赖的包的话，还需要修改DESCRIPTION文件
 * 最后运行
-```devtools::document()
+```
+devtools::document()
 ```
 生成文本，看是否有问题
 * Rstudio的Build - Check Package里面可以测试生成包是否有问题，有一些错误和warning可以酌情允许，还需要查看man里面的帮助文档是否有问题
