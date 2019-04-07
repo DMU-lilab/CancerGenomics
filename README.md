@@ -22,11 +22,10 @@ From the command line and in the directory where CancerGenomics github was clone
 
 
 如果要添加实验室的其它函数，需要
-* 下载这个文件夹到本地
+* 下载这个文件夹到本地,直接下载或者用git
 ```
 git clone https://github.com/DMU-lilab/CancerGenomics.git
 ```
-或者直接下载
 * R环境中要有roxygen2和devtools两个包，如果没有,请在R环境下使用install.packages安装
 
 ```
