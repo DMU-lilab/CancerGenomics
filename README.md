@@ -1,9 +1,30 @@
 # CancerGenomics
 Some useful tools for cancer genome processing developed by Li lab
 
+### installation
+#### Option 1(Recommended)
+Using devtools
+```
+install.packages("devtools")
+library(devtools)
+install_github("DMU-lilab/CancerGenomics")
+```
+### Option 2
+Manual installation
+#### Checkout the latest release of CancerGenomics from GitHub
+```git clone https://github.com/DMU-lilab/CancerGenomics.git```
+#### Install R dependencies (in R)
+ ```install.packages("data.table") # version > 1.10.4```
+
+#### Install the MutHeatmap package
+From the command line and in the directory where CancerGenomics github was cloned.
+```R CMD INSTALL CancerGenomics ```
+
+
 如果要添加实验室的其它函数，需要
 * 下载这个文件夹到本地
-```git clone https://github.com/DMU-lilab/CancerGenomics.git
+```
+git clone https://github.com/DMU-lilab/CancerGenomics.git
 ```
 或者直接下载
 * R环境中要有roxygen2和devtools两个包，如果没有,请在R环境下使用install.packages安装
