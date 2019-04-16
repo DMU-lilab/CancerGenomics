@@ -24,3 +24,4 @@ Get afd value in all possible arguments of AFD function
 data(afd_test_dt)
 afd <- test_afd(afd_test_dt$FREQ_1.x, afd_test_dt$FREQ_1.y)
 }
+

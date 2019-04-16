@@ -23,7 +23,6 @@ require(MASS)
 #' @examples
 #' data(afd_test_dt)
 #' afd <- AFD(afd_test_dt$FREQ_1.x, afd_test_dt$FREQ_1.y)
-#' @export AFD
 #' @import data.table
 #' @import MASS
 AFD <- function(FREQ_1.x, FREQ_1.y, power = 2, density = T, density_method = "xdensity", n = 256, filterAF = 2, filterDEV=5){
@@ -71,23 +70,29 @@ AFD <- function(FREQ_1.x, FREQ_1.y, power = 2, density = T, density_method = "xd
   FREQ_1.x <- FREQ_1.x[filter_idx]
   FREQ_1.y <- FREQ_1.y[filter_idx]
 
-
-  dt <- transpose_coordinate(FREQ_1.x, FREQ_1.y)
-  dt <- dt[abs(deviation) >= filterDEV,]
-
+  dt <- transpose_coordinate(FREQ_1.x, FREQ_1.y) # corrdinate transpose
+  dt <- dt[abs(deviation) >= filterDEV,] # filter by deviation
+  ## AFD when density is not taken into count
   if(!density){return(mean(abs(dt$deviation)^power))}
+  ## AFD when using "xdensity" method, i.e., the transposed diagonal
   if(density_method == "xdensity"){
-    dn <- density(dt$diagonal, n=n)
-    bin_len <- dn$x[2] - dn$x[1]
-    breaks <- c(dn$x - bin_len/2, dn$x[length(dn$x)] + bin_len/2)
-    dt$bin_idx <- cut(dt$diagonal, breaks = breaks, labels = F)
-    dt$density <- dn$y[dt$bin_idx]
-    bin_dt <- unique(dt[,.(d=mean(abs(deviation)), density),by = bin_idx])
-    AFD <- mean((abs(bin_dt$d)) ^ power * bin_dt$density)
+    dn <- density(dt$diagonal, n=n) #1d Kernal Density
+    bin_len <- dn$x[2] - dn$x[1] # bin length
+    breaks <- c(dn$x - bin_len/2, dn$x[length(dn$x)] + bin_len/2) # bin boundary, treat dn$x as bin center point
+    dt$bin_idx <- cut(dt$diagonal, breaks = breaks, labels = F) # add bin id to dt data.table
+    dt$density <- dn$y[dt$bin_idx] # add density of each bin to dt data.table
+    #bin_dt <- unique(dt[,.(d=mean(abs(deviation)), density),by = bin_idx])
+    #AFD <- mean((abs(bin_dt$d)) ^ power * bin_dt$density)
+    bin_dt <- dt[, .(bin_AFD=mean(abs(deviation)) ^ power * mean(density)), by=bin_idx]
+    AFD <- mean(bin_dt$bin_AFD)
   }else if(density_method =="kde2d"){
     density_2d <- get_density_2d(dt$diagonal, dt$deviation, n = n)
-    density <- density_2d$z
-    AFD <- mean(abs(density_2d$y) * density)
+    density <- density_2d$z # rows for diagonal, i.e. x, bins, column for deviation, i.e. y,  bins
+    deviation <- density_2d$y
+    AFD <- mean(density %*% abs(deviation) ^ power) # calculate AFD by matrix multiplication
   }
   return(AFD)
 }
+
+
+
