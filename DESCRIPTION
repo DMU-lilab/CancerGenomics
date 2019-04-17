@@ -1,7 +1,7 @@
 Package: CancerGenomics
 Type: Package
 Title: Some useful tools for cancer genome processing developed by Li lab
-Version: 0.1.0
+Version: 0.1.1
 Author: Lilab
 Maintainer: Ywliao <ywliao2015@gmail.com>
 Description: Some useful tools for cancer genome processing developed by Li lab,
