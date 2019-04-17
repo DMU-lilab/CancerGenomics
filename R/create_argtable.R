@@ -10,8 +10,8 @@ require(data.table)
 #' @param  ... all arguments of AFD function to test
 #' @return data table: all possible combinations of n arguments
 #' @examples
-#'  arg_table <- create_argtable(power = seq(1, 5, by = 1), density = c(T,F),
-#'  density_method = c("xdensity", "kde2d"), n = 2^(7:9),filterAF = seq(1, 5, by = 1), filterDEV = seq(1,20, by = 5))
+#' arg_table <- create_argtable(power = seq(1, 5, by = 1), density = c(T,F),
+#' density_method = c("xdensity", "kde2d"), n = 2^(7:9),filterAF = seq(1, 5, by = 1), filterDEV = seq(1,20, by = 5))
 #' @export create_argtable
 #' @import data.table
 create_argtable <- function(...){
