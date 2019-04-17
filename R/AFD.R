@@ -23,6 +23,7 @@ require(MASS)
 #' @examples
 #' data(afd_test_dt)
 #' afd <- AFD(afd_test_dt$FREQ_1.x, afd_test_dt$FREQ_1.y)
+#' @export AFD
 #' @import data.table
 #' @import MASS
 AFD <- function(FREQ_1.x, FREQ_1.y, power = 2, density = T, density_method = "xdensity", n = 256, filterAF = 2, filterDEV=5){
