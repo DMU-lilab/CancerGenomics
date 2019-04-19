@@ -5,7 +5,7 @@
 \title{Calculate AFD frow two sample  allele frequency}
 \usage{
 AFD(FREQ_1.x, FREQ_1.y, power = 2, density = T,
-  density_method = "xdensity", n = 256, filterAF = 2, filterDEV = 5)
+  density_method = "xdensity", n = 256, filterAF = 0.2, filterDEV = 5)
 }
 \arguments{
 \item{FREQ_1.x}{allele frequency of normal sample to calculate AFD}

@@ -26,7 +26,7 @@ require(MASS)
 #' @export AFD
 #' @import data.table
 #' @import MASS
-AFD <- function(FREQ_1.x, FREQ_1.y, power = 2, density = T, density_method = "xdensity", n = 256, filterAF = 2, filterDEV=5){
+AFD <- function(FREQ_1.x, FREQ_1.y, power = 2, density = T, density_method = "xdensity", n = 256, filterAF = 0.2, filterDEV=5){
   # Calculate AFD frow two sample  allele frequency
   # Args:
   #   REQ_1.x, FREQ_1.y, allele frequency of two sample to calculate AFD
