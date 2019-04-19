@@ -20,7 +20,7 @@ test_afd <- function(FREQ_1.x, FREQ_1.y){
   # Args:
   #   REQ_1.x, FREQ_1.y, allele frequency of two sample to calculate AFD
   # Returns: data.table, all AFD value in all possible combinations of n arguments
-  arg_table <- create_argtable(power = seq(0, 1, by = 0.2), density = c(T), density_method = c("xdensity", "kde2d"), n = 2^(7:9),filterAF = seq(1, 5, by = 1), filterDEV = seq(1,20, by = 5))
+  arg_table <- create_argtable(power = seq(1, 5, by = 1), density = c(T), density_method = c("xdensity", "kde2d"), n = 2^(7:9),filterAF = seq(0, 1, by = 0.1), filterDEV = seq(1,20, by = 5))
   arg_table_no_density <- create_argtable(power = seq(1, 5, by = 1), density = c(F), density_method ="xdensity", n = 256,filterAF = seq(1, 5, by = 1),filterDEV = seq(1,20, by = 5))
   arg_table <- rbind(arg_table, arg_table_no_density)
   arg_table[,AFD:=AFD(FREQ_1.x = FREQ_1.x, FREQ_1.y = FREQ_1.y, power = power, density = density, density_method = density_method,
